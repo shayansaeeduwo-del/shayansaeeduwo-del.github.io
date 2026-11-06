@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shayan Saeed</title>
+<meta name="description" content="Shayan Saeed: computer science student at Western University, founder of AthletiQ, boxing coach.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #15171c;
+    --muted: #5d6270;
+    --rule: #e5e7ec;
+    --purple: #4f2683;      /* Western purple */
+    --steel-soft: #eef0f3;
+    /* AthletiQ brand, used only inside the phone */
+    --aq-bg: #0a0a0a;
+    --aq-card: #161616;
+    --aq-line: #262626;
+    --aq-text: #ffffff;
+    --aq-dim: #8b8b8b;
+    --aq-green: #00ff87;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 17px/1.6 "Geist", system-ui, -apple-system, sans-serif;
+  }
+  a { color: var(--purple); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  a:hover { text-decoration-thickness: 2px; }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Top bar ---------- */
+  .top { display: flex; justify-content: space-between; align-items: center; padding: 28px 0; font-size: 15px; }
+  .top .mark { font-weight: 600; color: var(--ink); text-decoration: none; }
+  .top nav { display: flex; gap: 22px; }
+  .top nav a { color: var(--muted); text-decoration: none; }
+  .top nav a:hover { color: var(--ink); }
+
+  /* ---------- Hero ---------- */
+  .hero { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center; padding: 40px 0 88px; }
+  h1 {
+    font-size: clamp(44px, 7vw, 76px);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    font-weight: 600;
+    margin: 0 0 24px;
+  }
+  .lede { font-size: 19px; color: var(--muted); max-width: 30em; margin: 0 0 28px; }
+  .lede strong { color: var(--ink); font-weight: 500; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn {
+    display: inline-block; padding: 10px 16px; border-radius: 6px; font-size: 15px; font-weight: 500;
+    text-decoration: none; border: 1px solid var(--rule); color: var(--ink);
+  }
+  .btn:hover { border-color: var(--ink); }
+  .btn.primary { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .btn.primary:hover { background: var(--purple); border-color: var(--purple); }
+
+  /* ---------- Phone (the signature element) ---------- */
+  .demo { margin: 0; display: flex; flex-direction: column; align-items: center; }
+  .phone {
+    width: 300px; border-radius: 44px; background: #1c1d22; padding: 10px;
+    box-shadow: 0 30px 60px -30px rgba(21,23,28,.45), 0 0 0 1px #2a2c33 inset;
+  }
+  .screen {
+    background: var(--aq-bg); color: var(--aq-text); border-radius: 35px; padding: 18px 20px 22px;
+    font-size: 13px; line-height: 1.4; min-height: 560px; display: flex; flex-direction: column;
+  }
+  .status { display: flex; justify-content: space-between; font-size: 11.5px; font-weight: 600; padding: 0 6px 14px; }
+  .island { width: 84px; height: 22px; background: #000; border-radius: 12px; margin: -6px auto 0; }
+  .steps { display: flex; gap: 5px; margin-bottom: 18px; }
+  .steps i { flex: 1; height: 3px; border-radius: 2px; background: var(--aq-green); }
+  .stepnote { color: var(--aq-dim); font-size: 11.5px; margin: 0 0 4px; }
+  .screen h2 { font-size: 21px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 600; margin: 0 0 6px; }
+  .screen .sub { color: var(--aq-dim); margin: 0 0 20px; }
+
+  .slider { background: var(--aq-card); border: 1px solid var(--aq-line); border-radius: 14px; padding: 12px 14px 10px; margin-bottom: 10px; }
+  .slider-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+  .slider label { font-weight: 500; font-size: 13.5px; }
+  .slider output { font-variant-numeric: tabular-nums; color: var(--aq-green); font-weight: 600; }
+  input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 22px; background: transparent; margin: 0; cursor: pointer; }
+  input[type=range]::-webkit-slider-runnable-track { height: 4px; border-radius: 2px; background: linear-gradient(to right, var(--aq-green) var(--fill, 33%), #333 var(--fill, 33%)); }
+  input[type=range]::-moz-range-track { height: 4px; border-radius: 2px; background: #333; }
+  input[type=range]::-moz-range-progress { height: 4px; border-radius: 2px; background: var(--aq-green); }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #fff; margin-top: -7px; border: 0; }
+  input[type=range]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: #fff; border: 0; }
+
+  .split { margin: 8px 0 0; }
+  .split-label { color: var(--aq-dim); font-size: 11.5px; margin: 0 0 6px; }
+  .bar { display: flex; height: 8px; border-radius: 4px; overflow: hidden; gap: 2px; }
+  .bar span { transition: flex-grow .25s ease; min-width: 2px; }
+  .bar .a { background: var(--aq-green); }
+  .bar .t { background: #7cffc0; }
+  .bar .r { background: #2f5c46; }
+  .hours { display: flex; justify-content: space-between; color: var(--aq-dim); font-size: 11.5px; margin-top: 6px; font-variant-numeric: tabular-nums; }
+
+  .cta { margin-top: auto; padding-top: 16px; }
+  .cta a {
+    display: block; text-align: center; background: var(--aq-green); color: #04140c; text-decoration: none;
+    font-weight: 600; border-radius: 12px; padding: 12px; font-size: 14px;
+  }
+  .demo figcaption { font-size: 14px; color: var(--muted); margin-top: 16px; text-align: center; max-width: 300px; }
+
+  /* ---------- Sections ---------- */
+  section.block { border-top: 1px solid var(--rule); padding: 64px 0; display: grid; grid-template-columns: 220px 1fr; gap: 40px; }
+  section.block > h2 { font-size: 17px; font-weight: 600; margin: 0; }
+  .feature h3 { font-size: 30px; letter-spacing: -0.02em; line-height: 1.15; font-weight: 600; margin: 0 0 6px; }
+  .meta { color: var(--muted); font-size: 15px; margin: 0 0 18px; }
+  .feature p { max-width: 38em; margin: 0 0 14px; }
+  .feature ul { margin: 0 0 20px; padding-left: 18px; max-width: 38em; }
+  .feature li { margin-bottom: 6px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 18px; padding: 0; list-style: none; }
+  .tags li { font-size: 13px; padding: 3px 9px; border-radius: 999px; background: var(--steel-soft); color: #3c414c; margin: 0; }
+
+  .list { display: grid; gap: 28px; }
+  .row h3 { font-size: 18px; font-weight: 600; margin: 0; }
+  .row .meta { margin: 2px 0 8px; }
+  .row p { margin: 0; max-width: 38em; }
+
+  .about p { max-width: 36em; margin: 0 0 14px; }
+
+  footer { border-top: 1px solid var(--rule); padding: 40px 0 56px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-size: 15px; color: var(--muted); }
+  footer a { color: var(--ink); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; gap: 48px; padding: 24px 0 64px; }
+    section.block { grid-template-columns: 1fr; gap: 20px; padding: 48px 0; }
+  }
+  @media (max-width: 520px) {
+    body { font-size: 16px; }
+    .wrap { padding: 0 16px; }
+    .top nav { gap: 14px; }
+    .feature h3 { font-size: 26px; }
+  }
+  @media (max-width: 340px) { .phone { width: 100%; } }
+  @media (prefers-reduced-motion: reduce) { .bar span { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <a class="mark" href="#">Shayan Saeed</a>
+    <nav aria-label="Sections">
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div>
+        <h1>Shayan<br>Saeed</h1>
+        <p class="lede">Second-year computer science student at <strong>Western University</strong>, boxing coach, and founder of <strong>AthletiQ</strong>, an AI planner that builds weekly schedules for student-athletes. Try its goal-setting screen.</p>
+        <div class="links">
+          <a class="btn primary" href="https://github.com/shayansaeeduwo-del">GitHub</a>
+          <a class="btn" href="https://linkedin.com/in/shayan-saeed-8765773bb">LinkedIn</a>
+          <a class="btn" href="resume.pdf">Resume</a>
+          <a class="btn" href="mailto:ssaeed68@uwo.ca">Email</a>
+        </div>
+      </div>
+
+      <figure class="demo">
+        <div class="phone">
+          <div class="screen">
+            <div class="status"><span>9:41</span><span class="island" aria-hidden="true"></span><span>100%</span></div>
+            <div class="steps" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <p class="stepnote">Step 4 of 4</p>
+            <h2>What matters most this term?</h2>
+            <p class="sub">AthletiQ uses this to balance your week.</p>
+
+            <div class="slider">
+              <div class="slider-head"><label for="s-a">Academics</label><output id="o-a" for="s-a">40%</output></div>
+              <input type="range" id="s-a" min="0" max="100" value="40">
+            </div>
+            <div class="slider">
+              <div class="slider-head"><label for="s-t">Training</label><output id="o-t" for="s-t">40%</output></div>
+              <input type="range" id="s-t" min="0" max="100" value="40">
+            </div>
+            <div class="slider">
+              <div class="slider-head"><label for="s-r">Recovery</label><output id="o-r" for="s-r">20%</output></div>
+              <input type="range" id="s-r" min="0" max="100" value="20">
+            </div>
+
+            <div class="split">
+              <p class="split-label">Your 40 planned hours this week</p>
+              <div class="bar" aria-hidden="true"><span class="a" id="b-a"></span><span class="t" id="b-t"></span><span class="r" id="b-r"></span></div>
+              <div class="hours" id="hours" aria-live="polite"></div>
+            </div>
+
+            <div class="cta"><a href="#projects">Generate my schedule</a></div>
+          </div>
+        </div>
+        <figcaption>A demo of AthletiQ's goal-weighting step, in the app's colours. Drag a slider; the other two rebalance to 100%.</figcaption>
+      </figure>
+    </div>
+
+    <section class="block" id="projects">
+      <h2>Projects</h2>
+      <div>
+        <article class="feature">
+          <h3>AthletiQ</h3>
+          <p class="meta">Founder and developer · Nov 2025 – present</p>
+          <p>A mobile app that turns a student-athlete's program and sport into a personalized weekly plan for training, classes, and study, then points them to nearby tournaments and events that fit their goals.</p>
+          <ul>
+            <li>Email sign-up with deep-link confirmation, routing new users to onboarding and returning users home</li>
+            <li>Four-step onboarding (academic profile, athletic profile, goal weighting) with drafts saved on-device</li>
+            <li>Schedule generation with the Claude API, returning a colour-coded week rendered on a 7-day calendar</li>
+            <li>Supabase backend with row-level security on profiles, schedules, onboarding, and performance logs</li>
+          </ul>
+          <ul class="tags" aria-label="Built with">
+            <li>React Native</li><li>Expo</li><li>TypeScript</li><li>Supabase</li><li>PostgreSQL</li><li>Claude API</li>
+          </ul>
+          <a href="https://github.com/shayansaeeduwo-del/athletiq">View the code on GitHub</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" id="experience">
+      <h2>Experience</h2>
+      <div class="list">
+        <div class="row">
+          <h3>Gym Manager &amp; Head Youth Coach, Tomines Boxing</h3>
+          <p class="meta">Jul 2024 – Sep 2026</p>
+          <p>Grew the youth program from zero to 25 clients on my own and led every session. Also ran daily operations, coached adult classes, and wrote individual training plans for clients aged 15 to 50.</p>
+        </div>
+        <div class="row">
+          <h3>Vice President &amp; Head Coach, Western Boxing Club</h3>
+          <p class="meta">Nov 2025 – present</p>
+          <p>Took on both roles in first year. Plan and run the club's weekly training sessions for members of all levels.</p>
+        </div>
+        <div class="row">
+          <h3>Warehouse Associate, Purolator</h3>
+          <p class="meta">Jun 2026 – Sep 2026</p>
+          <p>Sorted, loaded, and routed packages in a high-volume facility against fixed delivery cut-offs.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block about" id="about">
+      <h2>About</h2>
+      <div>
+        <p>I'm in the Honours Specialization in Computer Science at Western, with a minor in Economics. Before Western I went through the I-STEM program at Aldershot Secondary School in Burlington.</p>
+        <p>Most of what I know about learning I learned in a boxing gym: break the skill down, drill it, get feedback, repeat. I'm applying that to software now, and I'm looking for a summer 2027 internship where I can do it on a real team.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Shayan Saeed · London, Ontario</span>
+    <a href="mailto:ssaeed68@uwo.ca">ssaeed68@uwo.ca</a>
+  </footer>
+</div>
+
+<script>
+  // Goal-weighting demo: moving one slider rebalances the other two so the total stays 100.
+  const ids = ["a", "t", "r"];
+  const s = Object.fromEntries(ids.map(k => [k, document.getElementById("s-" + k)]));
+  const o = Object.fromEntries(ids.map(k => [k, document.getElementById("o-" + k)]));
+  const b = Object.fromEntries(ids.map(k => [k, document.getElementById("b-" + k)]));
+  const hours = document.getElementById("hours");
+  const names = { a: "Academics", t: "Training", r: "Recovery" };
+  const TOTAL_HOURS = 40;
+  let v = { a: 40, t: 40, r: 20 };
+
+  function render() {
+    ids.forEach(k => {
+      s[k].value = v[k];
+      s[k].style.setProperty("--fill", v[k] + "%");
+      o[k].textContent = v[k] + "%";
+      b[k].style.flexGrow = Math.max(v[k], 0.5);
+    });
+    hours.innerHTML = ids.map(k => `<span>${names[k]} ${Math.round(v[k] / 100 * TOTAL_HOURS)}h</span>`).join("");
+  }
+
+  function setOne(k, val) {
+    val = Math.min(100, Math.max(0, Math.round(val)));
+    const others = ids.filter(x => x !== k);
+    const rest = 100 - val;
+    const prev = v[others[0]] + v[others[1]];
+    let first = prev === 0 ? Math.round(rest / 2) : Math.round(rest * v[others[0]] / prev);
+    v[k] = val;
+    v[others[0]] = first;
+    v[others[1]] = rest - first;
+    render();
+  }
+
+  ids.forEach(k => s[k].addEventListener("input", e => setOne(k, +e.target.value)));
+  render();
+</script>
+</body>
+</html>
